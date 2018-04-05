@@ -46,24 +46,24 @@ open class APNGImage: NSObject { // For ObjC compatibility
     }
     
     /// Size of the image in point. The scale factor is considered.
-    open var size: CGSize {
+    @objc open var size: CGSize {
         return CGSize(width: internalSize.width / scale, height: internalSize.height / scale)
     }
     
     /// Scale of the image.
-    open let scale: CGFloat
+    @objc open let scale: CGFloat
     
     /// Repeat count of animation of the APNG image.
     /// It is read from APNG data. However, you can change it to modify the loop behaviors.
     /// Set this to `RepeatForever` will make the animation loops forever.
-    open var repeatCount: Int
+    @objc open var repeatCount: Int
     
-    let firstFrameHidden: Bool
-    let bitDepth: Int
+    @objc let firstFrameHidden: Bool
+    @objc let bitDepth: Int
     
     /// The count of frames in this APNG image.
     /// The value of it for a single plain PNG file would be 1.
-    public let frameCount: Int
+    @objc public let frameCount: Int
     
     fileprivate(set) var frames: [Frame]?
     
@@ -213,7 +213,7 @@ open class APNGImage: NSObject { // For ObjC compatibility
      
      - returns: A new image object for the specified file, or nil if the method could not initialize the image from the specified file.
      */
-    public convenience init?(contentsOfFile path: String, saveToCache: Bool = false, progressive: Bool = false) {
+    @objc public convenience init?(contentsOfFile path: String, saveToCache: Bool = false, progressive: Bool = false) {
         
         if let apng = APNGCache.defaultCache.imageForKey(path) { // Found in the cache
             self.init(apng: apng)
@@ -252,7 +252,7 @@ open class APNGImage: NSObject { // For ObjC compatibility
      - returns: A new image object for the specified data, or nil if the method could not initialize the image from the specified data.
      
      */
-    public convenience init?(data: Data, progressive: Bool = false) {
+    @objc public convenience init?(data: Data, progressive: Bool = false) {
         self.init(data: data, scale: 1, progressive: progressive)
     }
     

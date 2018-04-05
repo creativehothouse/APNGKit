@@ -49,7 +49,7 @@ open class APNGImageView: APNGView {
     /// The image displayed in the image view.
     /// If you change the image when the animation playing, 
     /// the animation of original image will stop, and the new one will start automatically.
-    open var image: APNGImage? { // Setter should be run on main thread
+    @objc open var image: APNGImage? { // Setter should be run on main thread
         didSet {
             invalidateIntrinsicContentSize()
 
@@ -82,7 +82,7 @@ open class APNGImageView: APNGView {
     
     /// A Bool value indicating whether the animation should be 
     /// started automatically after an image is set. Default is false.
-    open var autoStartAnimation: Bool {
+    @objc open var autoStartAnimation: Bool {
         didSet {
             if autoStartAnimation {
                 startAnimating()
@@ -94,7 +94,7 @@ open class APNGImageView: APNGView {
     /// ScrollView(CollectionView, TableView) items with Animated APNGImageView will not freeze during scrolling
     /// - Note: This may decrease scrolling smoothness with lot's of animations
     @available(*, deprecated, message: "This is not necessary anymore. Now APNGKit runs in a GCD-based timer.")
-    open var allowAnimationInScrollView = false
+    @objc open var allowAnimationInScrollView = false
     
     open weak var delegate: APNGImageViewDelegate?
     
